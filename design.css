@@ -104,6 +104,23 @@ body {
     cursor: pointer;
 }
 
+/* 햄버거 버튼 */
+.gnb-menu {
+    position: absolute;
+    top: 50%;
+    /* 세로 가운데 정렬 */
+    right: 40px;
+    /* Figma 오른쪽 패딩 */
+    transform: translateY(-50%);
+
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
 /* ==================== DESIGN WRAPPER ==================== */
 
 .design-wrapper {
@@ -315,4 +332,102 @@ body {
     height: auto;
     display: block;
     z-index: 5;
+}
+
+/* ============================
+   KIOSK VIDEO (kioskVod.mp4)
+============================ */
+.design-kiosk-vod {
+    position: absolute;
+    top: 1565px;
+    left: 328px;
+    height: auto;
+    z-index: 20;
+    opacity: 1;
+    object-fit: cover;
+    width: 550px;
+    height: 845px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* ============================
+   GNB 햄버거 드롭다운 (디자인 수정)
+============================ */
+
+.gnb-menu-panel {
+  position: fixed;
+  top: 100px;       
+  left: 1300px;        
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  z-index: 2000;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* 열렸을 때 */
+.gnb-menu-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* 이름 버튼 – Figma 스타일 */
+.gnb-menu-item {
+  width: 72px;
+  height: 72px;
+  padding: 4px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  border-radius: 20px;
+  border: 2px solid var(--glass_app-glass_out_app, rgba(242, 244, 255, 0.20));
+  background: rgba(255, 255, 255, 0.60);
+  box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.05);
+
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--main_color_main_1, #56AFDF);
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* 열릴 때 순서대로 ‘쫙’ 내려오는 딜레이 */
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(1) { transition-delay: 0.02s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(2) { transition-delay: 0.06s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(3) { transition-delay: 0.10s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(4) { transition-delay: 0.14s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(5) { transition-delay: 0.18s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(6) { transition-delay: 0.22s; }
+
+.gnb-menu-panel.is-open .gnb-menu-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 호버 시 */
+.gnb-menu-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(242, 244, 255, 0.7);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.25);
 }

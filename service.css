@@ -51,15 +51,18 @@ img {
 /* 숨김 상태 클래스 */
 .gnb.gnb--hidden {
   opacity: 0;
-  transform: translateX(-50%) translateY(-20px); /* 살짝 위로 올라가며 사라지는 느낌 */
+  transform: translateX(-50%) translateY(-20px);
+  /* 살짝 위로 올라가며 사라지는 느낌 */
   pointer-events: none;
 }
 
 /* 로고 아이콘 */
 .gnb-logo-icon {
   position: absolute;
-  top: 24px; /* Figma padding top */
-  left: 40px; /* Figma padding left */
+  top: 24px;
+  /* Figma padding top */
+  left: 40px;
+  /* Figma padding left */
   width: auto;
   height: 34px;
 }
@@ -68,21 +71,25 @@ img {
 .gnb-nav {
   position: absolute;
   top: 24px;
-  left: 900px; /* About 기준으로 계산된 위치 */
+  left: 900px;
+  /* About 기준으로 계산된 위치 */
   display: flex;
   align-items: center;
-  gap: 32px; /* 메뉴 간 간격 */
+  gap: 32px;
+  /* 메뉴 간 간격 */
 }
 
 /* 메뉴 텍스트 스타일 (Figma 수치) */
 .gnb-nav a {
   text-decoration: none;
-  color: #40424d; /* Trout/800 */
+  color: #40424d;
+  /* Trout/800 */
   font-family: "Pretendard", sans-serif;
   font-size: 20px;
   font-weight: 500;
   font-style: normal;
-  line-height: 34px; /* 170% */
+  line-height: 34px;
+  /* 170% */
   letter-spacing: 0.4px;
   position: relative;
 }
@@ -111,8 +118,10 @@ img {
 /* 햄버거 버튼 */
 .gnb-menu {
   position: absolute;
-  top: 50%; /* 세로 가운데 정렬 */
-  right: 40px; /* Figma 오른쪽 패딩 */
+  top: 50%;
+  /* 세로 가운데 정렬 */
+  right: 40px;
+  /* Figma 오른쪽 패딩 */
   transform: translateY(-50%);
 
   width: 24px;
@@ -130,7 +139,8 @@ img {
   width: 1920px;
   margin: 0 auto;
   padding: 0;
-  height: 22000px; /* 절대배치 이미지들 때문에 충분히 크게 */
+  height: 22000px;
+  /* 절대배치 이미지들 때문에 충분히 크게 */
 }
 
 /* title.svg */
@@ -150,16 +160,6 @@ img {
   left: 0;
   width: 1920px;
   height: auto;
-}
-
-/* phone.svg */
-.service-phone {
-  position: absolute;
-  top: 5664.79px;
-  left: 728.5px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
 }
 
 /* home.svg */
@@ -210,4 +210,567 @@ img {
   width: 1920px;
   height: auto;
   object-fit: cover;
+}
+
+/* ============================
+   SERVICE CARDS
+============================ */
+
+.service-cards {
+  position: absolute;
+  /* .service-wrapper 기준 */
+  top: 0;
+  /* 카드들의 top이 절대 위치라면 0으로 두기 */
+  left: 0;
+  width: 1920px;
+  height: 2600px;
+  /* 카드 전체 영역 (여유 있게) */
+  pointer-events: none;
+}
+
+/* 카드 공통 스타일 */
+.service-card {
+  position: absolute;
+  width: 410px;
+  /* 고정 크기 */
+  height: 560px;
+  /* 고정 크기 */
+  pointer-events: auto;
+  transition:
+    transform 0.4s ease,
+    filter 0.3s ease,
+    z-index 0.3s ease;
+  transform-origin: center center;
+  z-index: 5;
+  overflow: hidden;
+  /* 이미지 넘침 방지 */
+  border-radius: 30px;
+  /* 필요 시 둥글게 */
+}
+
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 크기에 맞게 꽉 채우기 */
+  display: block;
+}
+
+/* 카드 위치 (유저가 준 좌표 그대로) */
+.card-1 {
+  top: 1497px;
+  left: -143px;
+}
+
+.card-2 {
+  top: 1157px;
+  left: 307px;
+}
+
+.card-3 {
+  top: 1749px;
+  left: 307px;
+}
+
+.card-4 {
+  top: 905px;
+  left: 757px;
+}
+
+.card-5 {
+  top: 1503px;
+  left: 757px;
+}
+
+.card-6 {
+  top: 1245px;
+  left: 1207px;
+}
+
+.card-7 {
+  top: 1837px;
+  left: 1207px;
+}
+
+.card-8 {
+  top: 1376px;
+  left: 1657px;
+}
+
+/* 호버 시 나머지 블러 처리 */
+.service-card.is-blur {
+  filter: blur(4px) brightness(0.9);
+}
+
+/* 활성 카드 (호버한 카드) */
+.service-card.is-active {
+  transform: translate(var(--card-shift-x, 0px),
+      var(--card-shift-y, -40px)) scale(1.06);
+  z-index: 20;
+  filter: none;
+}
+
+/* ============================
+   ONBOARDING IMAGES
+============================ */
+
+.onboarding-img {
+  position: absolute;
+  display: block;
+  z-index: 5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+  /* 반짝임이 박스 밖으로 안 나가게 */
+}
+
+/* 공통 크기: 1,2,4,5 */
+.onboarding-s {
+  width: 384px;
+  height: 864px;
+}
+
+/* 개별 크기: 3 */
+.onboarding-m {
+  width: 509px;
+  height: 1037px;
+}
+
+/* 랩퍼 안의 실제 이미지 */
+.onboarding-img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ============================
+   POSITION
+============================ */
+
+.onboarding-1 {
+  top: 5737.54px;
+  left: -162px;
+}
+
+.onboarding-2 {
+  top: 5737.54px;
+  left: 271px;
+}
+
+.onboarding-3 {
+  top: 5645px;
+  left: 705px;
+}
+
+.onboarding-4 {
+  top: 5737.54px;
+  left: 1264px;
+}
+
+.onboarding-5 {
+  top: 5737.54px;
+  left: 1698px;
+}
+
+/* ======================================
+   ONBOARDING — HOVER INTERACTION
+====================================== */
+
+.onboarding-group:hover .onboarding-img {
+  filter: blur(4px);
+  opacity: 0.999999;
+  transition: 0.35s ease;
+}
+
+.onboarding-group .onboarding-img:hover {
+  filter: blur(0) !important;
+  opacity: 1 !important;
+  transform: scale(1.08);
+  z-index: 20;
+  transition: 0.35s ease;
+}
+
+/* ============================
+   HOME MULTI CARDS
+============================ */
+
+.service-home-img {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  z-index: 6;
+}
+
+/* home_1: 페이드 전용 (슬라이드 X) */
+.home-1 {
+  top: 7722px;
+  left: 80px;
+  width: 384px;
+  height: 864px;
+  transform: none;
+  /* 슬라이드 안 씀 */
+}
+
+/* home_2,4,5: 아래에서 올라오는 카드 */
+.home-2,
+.home-4,
+.home-5 {
+  width: 311px;
+  height: 701px;
+  transform: translateY(40px);
+  /* 초기: 아래에 살짝 숨겨두기 */
+}
+
+.home-2 {
+  top: 7886px;
+  left: 530px;
+}
+
+.home-3 {
+  top: 7886px;
+  left: 863px;
+  width: 311px;
+  height: 1248px;
+  transform: translateY(40px);
+  /* 이 친구도 슬라이드 인 */
+}
+
+.home-4 {
+  top: 7886px;
+  left: 1196px;
+}
+
+.home-5 {
+  top: 7886px;
+  left: 1529px;
+}
+
+/* ===== 스크롤 진입 시 상태 ===== */
+
+/* 공통: 보일 때 opacity 1 */
+.service-home-img.is-visible {
+  opacity: 1;
+}
+
+/* home_1은 opacity만 */
+.home-1.is-visible {
+  transform: none;
+}
+
+/* 나머지 2~5는 위로 슬라이드 인 */
+.home-2.is-visible,
+.home-3.is-visible,
+.home-4.is-visible,
+.home-5.is-visible {
+  transform: translateY(0);
+}
+
+/* ============================
+   CONTENTS TEXT (SCALE ANIMATION)
+============================ */
+
+.contents-text {
+  position: absolute;
+  width: 635px;
+  height: auto;
+  transform: scale(0.5);
+  transform-origin: top right;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0.4;
+  z-index: 10;
+}
+
+/* ======= 정확한 위치값 ======= */
+
+.ct-1 {
+  top: 10248.34px;
+  left: 755px;
+}
+
+.ct-2 {
+  top: 10459.34px;
+  left: 755px;
+}
+
+.ct-3 {
+  top: 10603.34px;
+  left: 755px;
+}
+
+.ct-4 {
+  top: 11156.84px;
+  left: 755px;
+}
+
+.ct-5 {
+  top: 11372.84px;
+  left: 755px;
+}
+
+.ct-6 {
+  top: 11756.84px;
+  left: 755px;
+}
+
+/* ======= 스크롤 진입 시 ======= */
+.contents-text.is-visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ============================
+   ACTIVITY IMAGES
+============================ */
+
+.activity-img {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(120px);
+  /* ⭐ 밑에서 올라오는 효과 */
+  transition: transform 0.7s ease, opacity 0.7s ease;
+  z-index: 10;
+}
+
+/* ---- 정확한 위치 ---- */
+
+.act-1 {
+  top: 13071px;
+  left: 305px;
+  width: 384px;
+  height: 864px;
+}
+
+.act-2 {
+  top: 13071px;
+  left: 769px;
+  width: 384px;
+  height: 1605px;
+}
+
+.act-3 {
+  top: 13071px;
+  left: 1231px;
+  width: 384px;
+  height: 864px;
+}
+
+/* ---- 스크롤 진입 시 ---- */
+.activity-img.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   COMMUNITY TEXT SCALE ANIMATION
+========================================= */
+
+.community-img {
+  position: absolute;
+  transform: scale(0.5);
+  transform-origin: center;
+  opacity: 0.4;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  z-index: 10;
+}
+
+/* ===== 정확한 위치 + width 적용 ===== */
+
+.com-1 {
+  top: 15594px;
+  left: 755px;
+  width: 514px;
+}
+
+.com-2 {
+  top: 15836px;
+  left: 755px;
+  width: 520px;
+}
+
+.com-3 {
+  top: 16078px;
+  left: 755px;
+  width: 520px;
+}
+
+.com-4 {
+  top: 17043px;
+  left: 1330px;
+  width: 520px;
+}
+
+/* ===== 스크롤 진입 시 ===== */
+.community-img.is-visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ============================
+   MY PAGE IMAGES (SCROLL IN)
+============================ */
+
+.my-img {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(120px);
+  /* 처음엔 아래로 숨겨둠 */
+  transition: transform 0.7s ease, opacity 0.7s ease;
+  z-index: 10;
+}
+
+/* 정확한 위치 + 크기 */
+
+.my-1 {
+  top: 18770px;
+  left: 122px;
+  width: 326px;
+  height: 734px;
+}
+
+.my-2 {
+  top: 18770px;
+  left: 573px;
+  width: 326px;
+  height: 734px;
+}
+
+.my-3 {
+  top: 18640px;
+  left: 992px;
+  width: 384px;
+  height: 864px;
+}
+
+.my-4 {
+  top: 18770px;
+  left: 1472px;
+  width: 326px;
+  height: 734px;
+}
+
+/* 스크롤 안으로 들어왔을 때 상태 */
+
+.my-img.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================
+   TITLE TEXT FADE IN/OUT
+============================ */
+
+.titletext-img {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 10;
+}
+
+/* 위치값 (그대로 적용) */
+.titletext-1 {
+  top: 3292px;
+  left: 530px;
+}
+
+.titletext-2 {
+  top: 3768px;
+  left: 1348px;
+}
+
+.titletext-3 {
+  top: 3945px;
+  left: 305px;
+}
+
+.titletext-4 {
+  top: 4253.61px;
+  left: 1015.18px;
+}
+
+/* 화면에 들어왔을 때 */
+.titletext-img.is-visible {
+  opacity: 1;
+}
+
+/* ============================
+   GNB 햄버거 드롭다운 (디자인 수정)
+============================ */
+
+.gnb-menu-panel {
+  position: fixed;
+  top: 100px;       
+  left: 1300px;        
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  z-index: 2000;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* 열렸을 때 */
+.gnb-menu-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* 이름 버튼 – Figma 스타일 */
+.gnb-menu-item {
+  width: 72px;
+  height: 72px;
+  padding: 4px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  border-radius: 20px;
+  border: 2px solid var(--glass_app-glass_out_app, rgba(242, 244, 255, 0.20));
+  background: rgba(255, 255, 255, 0.60);
+  box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.05);
+
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--main_color_main_1, #56AFDF);
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* 열릴 때 순서대로 ‘쫙’ 내려오는 딜레이 */
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(1) { transition-delay: 0.02s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(2) { transition-delay: 0.06s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(3) { transition-delay: 0.10s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(4) { transition-delay: 0.14s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(5) { transition-delay: 0.18s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(6) { transition-delay: 0.22s; }
+
+.gnb-menu-panel.is-open .gnb-menu-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 호버 시 */
+.gnb-menu-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(242, 244, 255, 0.7);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.25);
 }

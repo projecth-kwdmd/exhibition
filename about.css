@@ -2,116 +2,154 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
-        sans-serif;
-    background-color: #ffffff;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+  background-color: #ffffff;
 }
+
+/* ============================
+   공통 스크롤 애니메이션
+============================ */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: var(--scroll-delay, 0s);
+  /* 개별 요소 딜레이용 */
+}
+
+.scroll-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* ==================== GNB ==================== */
 
 .gnb {
-    position: fixed;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1390px;
-    height: 80px;
-    padding: 24px 40px;
-    border-radius: 80px;
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1390px;
+  height: 80px;
+  padding: 24px 40px;
+  border-radius: 80px;
 
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 10px 40px rgba(10, 15, 21, 0.06);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 40px rgba(10, 15, 21, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
-    z-index: 1000;
-    transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 1000;
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .gnb.gnb--hidden {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-20px);
-    pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+  pointer-events: none;
 }
 
 .gnb-logo-icon {
-    position: absolute;
-    top: 24px;
-    left: 40px;
-    height: 34px;
-    width: auto;
+  position: absolute;
+  top: 24px;
+  left: 40px;
+  height: 34px;
+  width: auto;
 }
 
 /* 메뉴 */
 .gnb-nav {
-    position: absolute;
-    top: 24px;
-    left: 900px;
-    display: flex;
-    gap: 32px;
-    align-items: center;
+  position: absolute;
+  top: 24px;
+  left: 900px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
 }
 
 .gnb-nav a {
-    text-decoration: none;
-    color: #40424d;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 34px;
-    letter-spacing: 0.4px;
-    position: relative;
+  text-decoration: none;
+  color: #40424d;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 34px;
+  letter-spacing: 0.4px;
+  position: relative;
 }
 
 .gnb-nav a.active {
-    color: #111827;
+  color: #111827;
 }
 
 .gnb-nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0;
-    height: 2px;
-    background: #56afdf;
-    transition: width 0.22s ease;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #56afdf;
+  transition: width 0.22s ease;
 }
 
 .gnb-nav a:hover::after,
 .gnb-nav a.active::after {
-    width: 100%;
+  width: 100%;
 }
 
 .gnb-menu {
-    position: absolute;
-    top: 50%;
-    right: 40px;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 18px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 18px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* 햄버거 버튼 */
+.gnb-menu {
+  position: absolute;
+  top: 50%;
+  /* 세로 가운데 정렬 */
+  right: 40px;
+  /* Figma 오른쪽 패딩 */
+  transform: translateY(-50%);
+
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 /* ==================== PLANNING SECTION ==================== */
 .about-planning {
   position: absolute;
-  top: 0px;                    /* 요청한 정확한 위치 */
+  top: 0px;
+  /* 요청한 정확한 위치 */
   left: 50%;
   transform: translateX(-50%);
 
-  width: 1920px;               /* 페이지 기준 전체 폭 */
+  width: 1920px;
+  /* 페이지 기준 전체 폭 */
   height: auto;
   display: block;
   z-index: 5;
@@ -120,10 +158,13 @@ body {
 /* ==================== OVERVIEW SECTION ==================== */
 .about-overview {
   position: absolute;
-  top: 1280px;        /* 요청한 정확한 위치 */
-  left: 80px;         /* 요청한 정확한 위치 */
+  top: 1280px;
+  /* 요청한 정확한 위치 */
+  left: 80px;
+  /* 요청한 정확한 위치 */
 
-  width: auto;        /* 원본 크기 유지 */
+  width: auto;
+  /* 원본 크기 유지 */
   height: auto;
   display: block;
   z-index: 5;
@@ -132,10 +173,13 @@ body {
 /* ==================== OVERVIEW 1 SECTION ==================== */
 .about-overview-1 {
   position: absolute;
-  top: 1585px;       /* 요청한 정확한 위치 */
-  left: 307px;       /* 요청한 정확한 위치 */
+  top: 1585px;
+  /* 요청한 정확한 위치 */
+  left: 307px;
+  /* 요청한 정확한 위치 */
 
-  width: auto;       /* 원본 크기 유지 */
+  width: auto;
+  /* 원본 크기 유지 */
   height: auto;
   display: block;
   z-index: 5;
@@ -144,7 +188,8 @@ body {
 /* ==================== OVERVIEW 2 SECTION ==================== */
 .about-overview-2 {
   position: absolute;
-  top: 1823px;       /* overview_1(1585px)의 중앙 */
+  top: 1823px;
+  /* overview_1(1585px)의 중앙 */
   left: 80px;
 
   width: auto;
@@ -156,8 +201,10 @@ body {
 /* ==================== OVERVIEW 3 SECTION ==================== */
 .about-overview-3 {
   position: absolute;
-  top: 1823px;        /* 요청한 정확한 위치 */
-  left: 1617px;       /* 오른쪽 끝쪽 정렬 */
+  top: 1823px;
+  /* 요청한 정확한 위치 */
+  left: 1617px;
+  /* 오른쪽 끝쪽 정렬 */
 
   width: auto;
   height: auto;
@@ -168,8 +215,10 @@ body {
 /* ==================== BACKGROUND SECTION ==================== */
 .about-background {
   position: absolute;
-  top: 2465px;      /* 요청한 정확한 위치 */
-  left: 80px;       /* 요청한 정확한 위치 */
+  top: 2465px;
+  /* 요청한 정확한 위치 */
+  left: 80px;
+  /* 요청한 정확한 위치 */
 
   width: auto;
   height: auto;
@@ -180,8 +229,10 @@ body {
 /* ==================== BACKGROUND 1 SECTION ==================== */
 .about-background-1 {
   position: absolute;
-  top: 2719px;     /* 요청한 정확한 위치 */
-  left: 80px;      /* 요청한 정확한 위치 */
+  top: 2719px;
+  /* 요청한 정확한 위치 */
+  left: 80px;
+  /* 요청한 정확한 위치 */
 
   width: auto;
   height: auto;
@@ -192,8 +243,10 @@ body {
 /* ==================== BACKGROUND 2 SECTION ==================== */
 .about-background-2 {
   position: absolute;
-  top: 2719px;      /* 요청한 정확한 위치 */
-  left: 700px;      /* 요청한 정확한 위치 */
+  top: 2719px;
+  /* 요청한 정확한 위치 */
+  left: 700px;
+  /* 요청한 정확한 위치 */
 
   width: auto;
   height: auto;
@@ -204,8 +257,10 @@ body {
 /* ==================== BACKGROUND 3 SECTION ==================== */
 .about-background-3 {
   position: absolute;
-  top: 2719px;      /* 요청한 정확한 위치 */
-  left: 1320px;     /* 요청한 정확한 위치 */
+  top: 2719px;
+  /* 요청한 정확한 위치 */
+  left: 1320px;
+  /* 요청한 정확한 위치 */
 
   width: auto;
   height: auto;
@@ -216,28 +271,34 @@ body {
 /* ==================== BLUE BOX SECTION ==================== */
 .about-blue-box {
   position: absolute;
-  top: 3499px;          /* 요청한 정확한 위치 */
+  top: 3499px;
+  /* 요청한 정확한 위치 */
 
   left: 50%;
   transform: translateX(-50%);
 
-  width: 1920px;        /* 전체 가로 */
-  height: 1234px;       /* 전체 세로 */
+  width: 1920px;
+  /* 전체 가로 */
+  height: 1234px;
+  /* 전체 세로 */
 
   background-color: #56AFDF;
-  z-index: 3;           /* 이미지 아래·위 조정 필요하면 알려줘 */
+  z-index: 3;
+  /* 이미지 아래·위 조정 필요하면 알려줘 */
 }
 
 /* ==================== BACKGROUND1 SECTION ==================== */
 .about-background1 {
   position: absolute;
-  top: 3699px;      /* 요청한 정확한 위치 */
+  top: 3699px;
+  /* 요청한 정확한 위치 */
   left: 80px;
 
   width: auto;
   height: auto;
   display: block;
-  z-index: 5;        /* 파란 박스 위에 위치 */
+  z-index: 5;
+  /* 파란 박스 위에 위치 */
 }
 
 /* ==================== BACKGROUND1 LINE 2 (3-Column) ==================== */
@@ -277,11 +338,14 @@ body {
 /* ==================== PROBLEM LINE SECTION ==================== */
 .about-problem-line {
   position: absolute;
-  top: 4793px;          /* 요청한 정확한 위치 */
-  left: 50%;            /* 화면 중앙 */
+  top: 4793px;
+  /* 요청한 정확한 위치 */
+  left: 50%;
+  /* 화면 중앙 */
   transform: translateX(-50%);
 
-  width: auto;          /* 원본 크기 유지 */
+  width: auto;
+  /* 원본 크기 유지 */
   height: auto;
   display: block;
   z-index: 5;
@@ -290,8 +354,10 @@ body {
 /* ==================== PROBLEM RECTANGLE SECTION ==================== */
 .about-problem-rectangle {
   position: absolute;
-  top: 5053px;      /* 요청한 정확한 위치 */
-  left: 80px;       /* 요청한 정확한 위치 */
+  top: 5053px;
+  /* 요청한 정확한 위치 */
+  left: 80px;
+  /* 요청한 정확한 위치 */
 
   width: auto;
   height: auto;
@@ -350,7 +416,7 @@ body {
   left: 1215px;
 
   width: 440px;
- height: 520px;
+  height: 520px;
 
   background-image: url("/public/about/problem_3.svg");
   background-size: contain;
@@ -366,11 +432,13 @@ body {
 /* ==================== SOLUTION SECTION ==================== */
 .about-solution {
   position: absolute;
-  top: 6373px;        /* 요청한 정확한 위치 */
+  top: 6373px;
+  /* 요청한 정확한 위치 */
   left: 50%;
   transform: translateX(-50%);
 
-  width: auto;        /* SVG 원본 크기 유지 */
+  width: auto;
+  /* SVG 원본 크기 유지 */
   height: auto;
   display: block;
   z-index: 5;
@@ -381,6 +449,7 @@ body {
     opacity: 0;
     transform: translateY(40px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -435,4 +504,655 @@ body {
 
 .about-solution-4.active {
   animation: solutionFadeUp 0.6s ease-out 0.45s forwards;
+}
+
+.about-survey {
+  position: absolute;
+  top: 8829px;
+  left: 80px;
+
+  width: auto;
+  /* 필요하면 조정 가능 */
+  height: auto;
+  /* 필요하면 조정 가능 */
+
+  z-index: 10;
+  /* 다른 요소 위에 올라오도록 */
+}
+
+.about-survey {
+  position: absolute;
+  top: 8829px;
+  left: 80px;
+  z-index: 10;
+}
+
+/* ===========================
+   Survey 1
+=========================== */
+.about-survey-1 {
+  position: absolute;
+  top: 9083px;
+  left: 80px;
+
+  width: 1760px;
+  height: auto;
+  z-index: 10;
+}
+
+/* ===========================
+   Survey 2
+=========================== */
+.about-survey-2 {
+  position: absolute;
+  top: 10228px;
+  left: 80px;
+
+  width: 1760px;
+  height: auto;
+  z-index: 10;
+}
+
+/* ===========================
+   Field Text 1
+=========================== */
+.about-fieldtext-1 {
+  position: absolute;
+  top: 11696px;
+  left: 80px;
+
+  width: auto;
+  height: auto;
+  z-index: 10;
+}
+
+/* ===========================
+   Field Text 2
+=========================== */
+.about-fieldtext-2 {
+  position: absolute;
+  top: 12010px;
+  left: 80px;
+
+  width: auto;
+  height: auto;
+  z-index: 10;
+}
+
+/* ===========================
+   퍼센트 카드 공통
+=========================== */
+.about-per-card {
+  position: absolute;
+  top: 14022px;
+
+  width: 480px;
+  /* SVG 원본 크기 */
+  height: 1080px;
+  /* SVG 원본 크기 */
+
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* 카드 위치 (정확한 4등분) */
+.per-card-1 {
+  left: 0px;
+}
+
+.per-card-2 {
+  left: 480px;
+}
+
+.per-card-3 {
+  left: 960px;
+}
+
+.per-card-4 {
+  left: 1440px;
+}
+
+/* 이미지 기본 스타일 */
+.per-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 480px;
+  height: 1080px;
+  object-fit: cover;
+
+  transition: opacity 0.32s ease-in-out;
+}
+
+/* 기본: base 보이기 */
+.per-base {
+  opacity: 1;
+}
+
+/* hover 상태 숨김 */
+.per-hover {
+  opacity: 0;
+}
+
+/* 🔥 호버 시 부드럽게 교체 */
+.about-per-card:hover .per-base {
+  opacity: 0;
+}
+
+.about-per-card:hover .per-hover {
+  opacity: 1;
+}
+
+.about-blue-box {
+  position: absolute;
+  top: 15101px;
+  left: 0;
+
+  width: 3920px;
+  height: 1024px;
+  background-color: #56AFDF;
+  z-index: 5;
+}
+
+/* ============================
+   TEXT ELEMENTS
+============================ */
+
+.about-text-1 {
+  position: absolute;
+  top: 15244px;
+  left: 80px;
+  width: auto;
+  height: auto;
+  z-index: 500;
+}
+
+.about-text-2 {
+  position: absolute;
+  top: 15429px;
+  left: 80px;
+  width: auto;
+  height: auto;
+  z-index: 500;
+
+}
+
+.about-text-3 {
+  position: absolute;
+  top: 15614px;
+  left: 80px;
+  width: auto;
+  height: auto;
+  z-index: 500;
+
+}
+
+.about-text-4 {
+  position: absolute;
+  top: 1579px;
+  left: 80px;
+  width: auto;
+  height: auto;
+  z-index: 500;
+
+}
+
+/* ============================
+   TEXT ELEMENTS
+============================ */
+
+.about-text-1 {
+  position: absolute;
+  top: 15244px;
+  left: 80px;
+  z-index: 500;
+  --scroll-delay: 0s;
+}
+
+.about-text-2 {
+  position: absolute;
+  top: 15429px;
+  left: 80px;
+  z-index: 500;
+  --scroll-delay: 0.12s;
+}
+
+.about-text-3 {
+  position: absolute;
+  top: 15614px;
+  left: 80px;
+  z-index: 500;
+  --scroll-delay: 0.24s;
+}
+
+.about-text-4 {
+  position: absolute;
+  top: 15799px;
+  left: 80px;
+  z-index: 500;
+  --scroll-delay: 0.36s;
+}
+
+/* ============================
+   TEXT scroll-fade animation
+============================ */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: var(--scroll-delay, 0s);
+}
+
+.scroll-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================
+   DOT ELEMENTS
+============================ */
+
+.about-dot-1 {
+  position: absolute;
+  top: 15430px;
+  left: 693px;
+  width: auto;
+  height: auto;
+  z-index: 501;
+  --scroll-delay: 0.08s;
+  /* text_2와 text_3 사이 자연스럽게 */
+}
+
+.about-dot-2 {
+  position: absolute;
+  top: 15613px;
+  left: 1259px;
+  width: auto;
+  height: auto;
+  z-index: 501;
+  --scroll-delay: 0.2s;
+  /* text_3 뒤 자연스럽게 등장 */
+}
+
+.about-dot-3 {
+  position: absolute;
+  top: 15796px;
+  left: 1108px;
+  width: auto;
+  height: auto;
+  z-index: 501;
+  --scroll-delay: 0.32s;
+  /* text_4 바로 뒤 */
+}
+
+/* ==================== VIDEO SECTION ==================== */
+.about-video {
+  position: absolute;
+  top: 16124px;
+  /* 요청한 정확한 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1920px;
+  /* 필요하면 1600px 등으로 줄여도 됨 */
+  height: auto;
+  display: block;
+  z-index: 10;
+  background: #000;
+  /* 로딩 전 까만 배경 */
+}
+
+/* ==================== FOOTER SECTION ==================== */
+.design-footer {
+  position: absolute;
+  top: 17205px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1920px;
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ============================
+   BEFORE / AFTER ROOT
+============================ */
+
+.about-before-after {
+  position: absolute;
+  top: 7719px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1920px;
+  height: 910px;
+}
+
+.ba-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.ba-panel {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 60px;
+  flex-shrink: 0;
+  transition: width 0.6s ease;
+}
+
+.ba-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 60px;
+}
+
+.ba-before {
+  width: 755px;
+}
+
+.ba-after {
+  width: 1165px;
+}
+
+.ba-wrapper:hover .ba-before {
+  width: 530px;
+}
+
+.ba-wrapper:hover .ba-after {
+  width: 1390px;
+}
+
+.ba-after {
+  position: relative;
+}
+
+/* ============================
+   중앙 버튼 (경계)
+============================ */
+
+.ba-center-btn {
+  position: absolute;
+  top: 50%;
+  left: 755px;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 20;
+  transition: left 0.6s ease;
+}
+
+.ba-wrapper:hover .ba-center-btn {
+  left: 530px;
+}
+
+/* ============================
+   BEFORE / AFTER 텍스트 뱃지
+============================ */
+
+.ba-badge {
+  position: absolute;
+  top: 60px;
+  padding: 12px 32px;
+  border-radius: 999px;
+  background-color: #56afdf;
+  color: #ffffff;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.4px;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+.ba-badge--before {
+  left: 80px;
+}
+
+.ba-badge--after {
+  left: 100px;
+}
+
+/* ============================
+   이미지 하단 텍스트
+============================ */
+.ba-caption {
+  position: absolute;
+  bottom: 40px;
+
+  font-family: "Pretendard", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  z-index: 6;
+  text-align: left;
+  line-height: 150%;
+  letter-spacing: 0.8px;
+}
+
+.ba-caption--before {
+  left: 80px;
+}
+
+.ba-caption--after {
+  left: 100px;
+}
+
+/* ============================
+   FIELD PIC STACK (스크롤 애니메이션)
+============================ */
+
+.about-fieldpic {
+  position: absolute;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  z-index: 6;
+  /* 위에 올라오도록 */
+}
+
+/* Figma 좌표 그대로 반영 */
+.about-fieldpic-1 {
+  top: 12397.25px;
+  left: 497.24px;
+}
+
+.about-fieldpic-2 {
+  top: 12173.07px;
+  left: 124.65px;
+}
+
+.about-fieldpic-3 {
+  top: 12173.08px;
+  left: 418.38px;
+}
+
+.about-fieldpic-4 {
+  top: 12201.95px;
+  left: 656.29px;
+}
+
+.about-fieldpic-5 {
+  top: 12329.30px;
+  left: 235.07px;
+}
+
+.about-fieldpic-6 {
+  top: 12278.08px;
+  left: 726.13px;
+}
+
+/* 보일 때 상태 */
+.about-fieldpic.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ FIELD PIC 7~11 위치 ============ */
+/* 좌표는 너가 준 값 그대로 사용 */
+
+.about-fieldpic-7 {
+  top: 13283.47px;
+  left: 1396.3px;
+  width: auto;
+  height: auto;
+}
+
+.about-fieldpic-8 {
+  top: 13143px;
+  left: 1363.42px;
+  width: auto;
+  height: auto;
+}
+
+.about-fieldpic-9 {
+  top: 13305.52px;
+  left: 1199.76px;
+  width: auto;
+  height: auto;
+}
+
+.about-fieldpic-10 {
+  top: 13331.69px;
+  left: 855px;
+  width: auto;
+  height: auto;
+}
+
+.about-fieldpic-11 {
+  top: 13166.68px;
+  left: 963.91px;
+  width: auto;
+  height: auto;
+}
+
+/* ============================
+   BACKGROUND HOVER ZOOM
+============================ */
+.bg-hover {
+  transition: transform 0.35s ease;
+  transform-origin: center center;
+  cursor: pointer;
+}
+
+.bg-hover:hover {
+  transform: scale(1.08);
+  /* 확대 비율은 자유롭게 수정 가능 */
+}
+
+/* ============================
+   BLUE BACKGROUND BOX (#56AFDF)
+============================ */
+.about-blue-bg {
+  position: absolute;
+  top: 3499px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1920px;
+  height: 1234px;
+
+  background: #56AFDF;
+
+  z-index: 0;
+  /* 필요하면 조절 — 다른 요소 아래/위 정렬 */
+}
+
+/* ============================
+   GNB 햄버거 드롭다운 (디자인 수정)
+============================ */
+
+.gnb-menu-panel {
+  position: fixed;
+  top: 100px;       
+  left: 1300px;        
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  z-index: 2000;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* 열렸을 때 */
+.gnb-menu-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* 이름 버튼 – Figma 스타일 */
+.gnb-menu-item {
+  width: 72px;
+  height: 72px;
+  padding: 4px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  border-radius: 20px;
+  border: 2px solid var(--glass_app-glass_out_app, rgba(242, 244, 255, 0.20));
+  background: rgba(255, 255, 255, 0.60);
+  box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.05);
+
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--main_color_main_1, #56AFDF);
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* 열릴 때 순서대로 ‘쫙’ 내려오는 딜레이 */
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(1) { transition-delay: 0.02s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(2) { transition-delay: 0.06s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(3) { transition-delay: 0.10s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(4) { transition-delay: 0.14s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(5) { transition-delay: 0.18s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(6) { transition-delay: 0.22s; }
+
+.gnb-menu-panel.is-open .gnb-menu-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 호버 시 */
+.gnb-menu-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(242, 244, 255, 0.7);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.25);
 }
