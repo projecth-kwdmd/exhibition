@@ -1,0 +1,213 @@
+/* ==================== RESET / BASE ==================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+  line-height: 1.6;
+  background-color: #ffffff;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==================== GNB ==================== */
+
+.gnb {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1390px;
+  height: 80px;
+  padding: 24px 40px;
+
+  border-radius: 80px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 40px rgba(10, 15, 21, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  z-index: 1000;
+
+  /* 🔥 서서히 나타났다/사라지게 할 트랜지션 */
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* 숨김 상태 클래스 */
+.gnb.gnb--hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px); /* 살짝 위로 올라가며 사라지는 느낌 */
+  pointer-events: none;
+}
+
+/* 로고 아이콘 */
+.gnb-logo-icon {
+  position: absolute;
+  top: 24px; /* Figma padding top */
+  left: 40px; /* Figma padding left */
+  width: auto;
+  height: 34px;
+}
+
+/* 메뉴 묶음 (About / Design / Service / Video) */
+.gnb-nav {
+  position: absolute;
+  top: 24px;
+  left: 900px; /* About 기준으로 계산된 위치 */
+  display: flex;
+  align-items: center;
+  gap: 32px; /* 메뉴 간 간격 */
+}
+
+/* 메뉴 텍스트 스타일 (Figma 수치) */
+.gnb-nav a {
+  text-decoration: none;
+  color: #40424d; /* Trout/800 */
+  font-family: "Pretendard", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 34px; /* 170% */
+  letter-spacing: 0.4px;
+  position: relative;
+}
+
+/* 현재 페이지(Service) 강조 */
+.gnb-nav a.active {
+  color: #111827;
+}
+
+.gnb-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #56afdf;
+  transition: width 0.22s ease;
+}
+
+.gnb-nav a:hover::after,
+.gnb-nav a.active::after {
+  width: 100%;
+}
+
+/* 햄버거 버튼 */
+.gnb-menu {
+  position: absolute;
+  top: 50%; /* 세로 가운데 정렬 */
+  right: 40px; /* Figma 오른쪽 패딩 */
+  transform: translateY(-50%);
+
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* ==================== SERVICE CANVAS ==================== */
+
+.service-wrapper {
+  position: relative;
+  width: 1920px;
+  margin: 0 auto;
+  padding: 0;
+  height: 22000px; /* 절대배치 이미지들 때문에 충분히 크게 */
+}
+
+/* title.svg */
+.service-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 4874px;
+  object-fit: cover;
+}
+
+/* onboarding.svg */
+.service-onboarding {
+  position: absolute;
+  top: 5165px;
+  left: 0;
+  width: 1920px;
+  height: auto;
+}
+
+/* phone.svg */
+.service-phone {
+  position: absolute;
+  top: 5664.79px;
+  left: 728.5px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* home.svg */
+.service-home {
+  position: absolute;
+  top: 7099px;
+  left: 0;
+  width: 1920px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* contents.svg */
+.service-contents {
+  position: absolute;
+  top: 9336px;
+  left: 0;
+  width: 1920px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* activity_community.svg */
+.service-activity-community {
+  position: absolute;
+  top: 12566.21px;
+  left: 0;
+  width: 1920px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ending.svg */
+.service-ending {
+  position: absolute;
+  top: 19836px;
+  left: 0;
+  width: 1920px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* footer.svg */
+.service-footer {
+  position: absolute;
+  top: 21116px;
+  left: 0;
+  width: 1920px;
+  height: auto;
+  object-fit: cover;
+}

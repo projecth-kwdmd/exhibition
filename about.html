@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Project H – About</title>
+    <link rel="stylesheet" href="about.css" />
+</head>
+
+<body>
+
+    <!-- ==================== GNB ==================== -->
+    <header class="gnb">
+        <img src="/public/service/gnb_icon.svg" class="gnb-logo-icon" alt="gnb icon" />
+
+        <nav class="gnb-nav">
+            <a href="about.html" class="active">About</a>
+            <a href="design.html">Design</a>
+            <a href="service.html">Service</a>
+            <a href="video.html">Video</a>
+        </nav>
+
+        <button class="gnb-menu">
+            <svg width="24" height="18" viewBox="0 0 24 18" fill="#56AFDF" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0 1.5C0 0.671573 0.671573 0 1.5 0H22.5C23.3284 0 24 0.671573 24 1.5C24 2.32843 23.3284 3 22.5 3H1.5C0.671573 3 0 2.32843 0 1.5Z" />
+                <path
+                    d="M0 9C0 8.17157 0.671573 7.5 1.5 7.5H22.5C23.3284 7.5 24 8.17157 24 9C24 9.82843 23.3284 10.5 22.5 10.5H1.5C0.671573 10.5 0 9.82843 0 9Z" />
+                <path
+                    d="M0 16.5C0 15.6716 0.671573 15 1.5 15H22.5C23.3284 15 24 15.6716 24 16.5C24 17.3284 23.3284 18 22.5 18H1.5C0.671573 18 0 17.3284 0 16.5Z" />
+            </svg>
+        </button>
+    </header>
+
+    <!-- ==================== ABOUT WRAPPER ==================== -->
+    <main class="about-wrapper">
+        <img src="/public/about/planning.svg" class="about-planning" alt="planning" />
+
+        <img src="/public/about/overview.svg" class="about-overview" alt="overview" />
+
+        <img src="/public/about/overview_1.svg" class="about-overview-1" alt="overview detail 1" />
+
+        <img src="/public/about/overview_2.svg" class="about-overview-2" alt="overview detail 2" />
+
+        <img src="/public/about/overview_3.svg" class="about-overview-3" alt="overview detail 3" />
+
+        <img src="/public/about/background.svg" class="about-background" alt="background" />
+
+        <img src="/public/about/background_1.svg" class="about-background-1" alt="background 1" />
+
+        <img src="/public/about/background_2.svg" class="about-background-2" alt="background 2" />
+
+        <img src="/public/about/background_3.svg" class="about-background-3" alt="background 3" />
+
+        <div class="about-blue-box"></div>
+
+        <img src="/public/about/background1.svg" class="about-background1" alt="background1" />
+
+        <img src="/public/about/background1_1.svg" class="about-background1-1" alt="background1 1" />
+        <img src="/public/about/background1_2.svg" class="about-background1-2" alt="background1 2" />
+        <img src="/public/about/background1_3.svg" class="about-background1-3" alt="background1 3" />
+
+        <img src="/public/about/problem_line.svg" class="about-problem-line" alt="problem line" />
+
+        <img src="/public/about/problem_Rectangle.svg" class="about-problem-rectangle" alt="problem rectangle" />
+
+        <div class="about-problem-1"></div>
+        <div class="about-problem-2"></div>
+        <div class="about-problem-3"></div>
+
+        <img src="/public/about/solution.svg" class="about-solution" alt="solution" />
+
+        <img src="/public/about/solution_1.svg" class="about-solution-1" alt="solution 1" />
+        <img src="/public/about/solution_2.svg" class="about-solution-2" alt="solution 2" />
+        <img src="/public/about/solution_3.svg" class="about-solution-3" alt="solution 3" />
+        <img src="/public/about/solution_4.svg" class="about-solution-4" alt="solution 4" />
+
+    </main>
+
+    <!-- gnb scroll fade logic + solution scroll 애니메이션 -->
+    <script>
+        // ================== GNB 사라졌다 나타나는 스크립트 ==================
+        (function () {
+            const gnb = document.querySelector(".gnb");
+            if (!gnb) return;
+
+            let lastScrollY = window.pageYOffset;
+            let ticking = false;
+
+            function handleScroll() {
+                const currentY = window.pageYOffset;
+                const diff = currentY - lastScrollY;
+
+                if (diff > 10) {
+                    gnb.classList.add("gnb--hidden");
+                } else if (diff < -10) {
+                    gnb.classList.remove("gnb--hidden");
+                }
+
+                lastScrollY = currentY;
+                ticking = false;
+            }
+
+            window.addEventListener("scroll", () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(handleScroll);
+                    ticking = true;
+                }
+            });
+        })();
+
+
+        // ================== SOLUTION 카드 순서대로 등장 ==================
+        document.addEventListener("DOMContentLoaded", () => {
+            const sol1 = document.querySelector(".about-solution-1");
+            const sol2 = document.querySelector(".about-solution-2");
+            const sol3 = document.querySelector(".about-solution-3");
+            const sol4 = document.querySelector(".about-solution-4");
+
+            // 요소들 없으면 그냥 종료
+            if (!sol1 || !sol2 || !sol3 || !sol4) return;
+
+            // sol1이 화면에 어느 정도 들어왔을 때 발동
+            function handleSolutionScroll() {
+                const rect = sol1.getBoundingClientRect();
+                const triggerPoint = window.innerHeight * 0.8; // 화면 아래쪽 80% 지점
+
+                if (rect.top <= triggerPoint) {
+                    sol1.classList.add("active");
+                    sol2.classList.add("active");
+                    sol3.classList.add("active");
+                    sol4.classList.add("active");
+
+                    // 한 번 실행 후 이벤트 제거 (계속 호출 안 되게)
+                    window.removeEventListener("scroll", handleSolutionScroll);
+                }
+            }
+
+            // 처음 로드 시 한 번 체크 + 스크롤 시 체크
+            handleSolutionScroll();
+            window.addEventListener("scroll", handleSolutionScroll);
+        });
+    </script>
+</body>
+
+</html>

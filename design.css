@@ -1,0 +1,318 @@
+/* ==================== RESET ==================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+        sans-serif;
+    background-color: #ffffff;
+}
+
+/* ==================== GNB ==================== */
+
+.gnb {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1390px;
+    height: 80px;
+    padding: 24px 40px;
+    border-radius: 80px;
+
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 40px rgba(10, 15, 21, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    z-index: 1000;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.gnb.gnb--hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+    pointer-events: none;
+}
+
+.gnb-logo-icon {
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    height: 34px;
+    width: auto;
+}
+
+/* 메뉴 */
+.gnb-nav {
+    position: absolute;
+    top: 24px;
+    left: 900px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.gnb-nav a {
+    text-decoration: none;
+    color: #40424d;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 34px;
+    letter-spacing: 0.4px;
+    position: relative;
+}
+
+.gnb-nav a.active {
+    color: #111827;
+}
+
+.gnb-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #56afdf;
+    transition: width 0.22s ease;
+}
+
+.gnb-nav a:hover::after,
+.gnb-nav a.active::after {
+    width: 100%;
+}
+
+.gnb-menu {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 18px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* ==================== DESIGN WRAPPER ==================== */
+
+.design-wrapper {
+    width: 1920px;
+    margin: 0 auto;
+    padding-top: 0;
+    position: relative;
+}
+
+.design-hero {
+    width: 100%;
+    height: auto;
+}
+
+.design-hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.design-kiosk {
+    position: absolute;
+    top: 1205px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1920px;
+    z-index: 10;
+}
+
+.design-kiosk-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==================== BLUE BOX + TICKETS ==================== */
+
+.design-blue-box {
+    position: absolute;
+    top: 1200px;
+    left: 1205px;
+
+    width: 715px;
+    height: 640px;
+
+    background-color: #56afdf;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.ticket {
+    position: absolute;
+    display: block;
+    width: auto;
+    height: auto;
+
+    opacity: 0;
+    transform-origin: center center;
+    transform: translateY(40px) scale(0.96);
+    animation: none;
+}
+
+.ticket.ticket--active {
+    animation: ticketStack 0.8s ease-out forwards;
+}
+
+.ticket-1 {
+    top: 252px;
+    left: 0px;
+    z-index: 1;
+}
+
+.ticket-2 {
+    top: 0px;
+    left: 133px;
+    z-index: 2;
+}
+
+.ticket-3 {
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+}
+
+.ticket-4 {
+    top: 0px;
+    left: 373px;
+    z-index: 4;
+}
+
+.ticket-5 {
+    top: 16px;
+    left: 0px;
+    z-index: 5;
+}
+
+.ticket-1.ticket--active {
+    animation-delay: 0s;
+}
+
+.ticket-2.ticket--active {
+    animation-delay: 0.25s;
+}
+
+.ticket-3.ticket--active {
+    animation-delay: 0.5s;
+}
+
+.ticket-4.ticket--active {
+    animation-delay: 0.75s;
+}
+
+.ticket-5.ticket--active {
+    animation-delay: 1s;
+}
+
+@keyframes ticketStack {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ==================== 아래 섹션 기본 틀 (필요하면 사용) ==================== */
+
+.design-section {
+    width: 100%;
+    margin: 120px 0;
+}
+
+.design-section-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+
+.design-full-img {
+    width: 100%;
+    height: auto;
+}
+
+/* ==================== BRANDING SECTION ==================== */
+.design-branding {
+    position: absolute;
+    top: 2480px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 1920px;
+    height: auto;
+    display: block;
+    z-index: 5;
+}
+
+/* ==================== TYPOGRAPHY SECTION ==================== */
+.design-typography {
+    position: absolute;
+    top: 3320px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 1760px;
+    height: auto;
+    display: block;
+    z-index: 5;
+}
+
+/* ==================== COLOR SECTION ==================== */
+.design-color {
+    position: absolute;
+    top: 4349px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 1760px;
+    height: 796px;
+    flex-shrink: 0;
+
+    display: block;
+    z-index: 5;
+}
+
+/* ==================== ICON SECTION ==================== */
+.design-icon {
+    position: absolute;
+    top: 5345px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 1920px;
+    height: auto;
+    display: block;
+    z-index: 5;
+}
+
+/* ==================== FOOTER SECTION ==================== */
+.design-footer {
+    position: absolute;
+    top: 6439px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 1920px;
+    height: auto;
+    display: block;
+    z-index: 5;
+}

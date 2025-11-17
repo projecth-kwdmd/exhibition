@@ -1,0 +1,438 @@
+/* ==================== RESET ==================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+        sans-serif;
+    background-color: #ffffff;
+}
+
+/* ==================== GNB ==================== */
+
+.gnb {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1390px;
+    height: 80px;
+    padding: 24px 40px;
+    border-radius: 80px;
+
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 40px rgba(10, 15, 21, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    z-index: 1000;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.gnb.gnb--hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+    pointer-events: none;
+}
+
+.gnb-logo-icon {
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    height: 34px;
+    width: auto;
+}
+
+/* 메뉴 */
+.gnb-nav {
+    position: absolute;
+    top: 24px;
+    left: 900px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.gnb-nav a {
+    text-decoration: none;
+    color: #40424d;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 34px;
+    letter-spacing: 0.4px;
+    position: relative;
+}
+
+.gnb-nav a.active {
+    color: #111827;
+}
+
+.gnb-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #56afdf;
+    transition: width 0.22s ease;
+}
+
+.gnb-nav a:hover::after,
+.gnb-nav a.active::after {
+    width: 100%;
+}
+
+.gnb-menu {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 18px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* ==================== PLANNING SECTION ==================== */
+.about-planning {
+  position: absolute;
+  top: 0px;                    /* 요청한 정확한 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1920px;               /* 페이지 기준 전체 폭 */
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== OVERVIEW SECTION ==================== */
+.about-overview {
+  position: absolute;
+  top: 1280px;        /* 요청한 정확한 위치 */
+  left: 80px;         /* 요청한 정확한 위치 */
+
+  width: auto;        /* 원본 크기 유지 */
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== OVERVIEW 1 SECTION ==================== */
+.about-overview-1 {
+  position: absolute;
+  top: 1585px;       /* 요청한 정확한 위치 */
+  left: 307px;       /* 요청한 정확한 위치 */
+
+  width: auto;       /* 원본 크기 유지 */
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== OVERVIEW 2 SECTION ==================== */
+.about-overview-2 {
+  position: absolute;
+  top: 1823px;       /* overview_1(1585px)의 중앙 */
+  left: 80px;
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== OVERVIEW 3 SECTION ==================== */
+.about-overview-3 {
+  position: absolute;
+  top: 1823px;        /* 요청한 정확한 위치 */
+  left: 1617px;       /* 오른쪽 끝쪽 정렬 */
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== BACKGROUND SECTION ==================== */
+.about-background {
+  position: absolute;
+  top: 2465px;      /* 요청한 정확한 위치 */
+  left: 80px;       /* 요청한 정확한 위치 */
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== BACKGROUND 1 SECTION ==================== */
+.about-background-1 {
+  position: absolute;
+  top: 2719px;     /* 요청한 정확한 위치 */
+  left: 80px;      /* 요청한 정확한 위치 */
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== BACKGROUND 2 SECTION ==================== */
+.about-background-2 {
+  position: absolute;
+  top: 2719px;      /* 요청한 정확한 위치 */
+  left: 700px;      /* 요청한 정확한 위치 */
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== BACKGROUND 3 SECTION ==================== */
+.about-background-3 {
+  position: absolute;
+  top: 2719px;      /* 요청한 정확한 위치 */
+  left: 1320px;     /* 요청한 정확한 위치 */
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== BLUE BOX SECTION ==================== */
+.about-blue-box {
+  position: absolute;
+  top: 3499px;          /* 요청한 정확한 위치 */
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1920px;        /* 전체 가로 */
+  height: 1234px;       /* 전체 세로 */
+
+  background-color: #56AFDF;
+  z-index: 3;           /* 이미지 아래·위 조정 필요하면 알려줘 */
+}
+
+/* ==================== BACKGROUND1 SECTION ==================== */
+.about-background1 {
+  position: absolute;
+  top: 3699px;      /* 요청한 정확한 위치 */
+  left: 80px;
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 5;        /* 파란 박스 위에 위치 */
+}
+
+/* ==================== BACKGROUND1 LINE 2 (3-Column) ==================== */
+.about-background1-1 {
+  position: absolute;
+  top: 3953px;
+  left: 80px;
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+.about-background1-2 {
+  position: absolute;
+  top: 3953px;
+  left: 700px;
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+.about-background1-3 {
+  position: absolute;
+  top: 3953px;
+  left: 1320px;
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== PROBLEM LINE SECTION ==================== */
+.about-problem-line {
+  position: absolute;
+  top: 4793px;          /* 요청한 정확한 위치 */
+  left: 50%;            /* 화면 중앙 */
+  transform: translateX(-50%);
+
+  width: auto;          /* 원본 크기 유지 */
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+/* ==================== PROBLEM RECTANGLE SECTION ==================== */
+.about-problem-rectangle {
+  position: absolute;
+  top: 5053px;      /* 요청한 정확한 위치 */
+  left: 80px;       /* 요청한 정확한 위치 */
+
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: -5;
+}
+
+/* ==================== PROBLEM HOVER SWITCH ==================== */
+
+/* PROBLEM 1 ---------------------------------- */
+.about-problem-1 {
+  position: absolute;
+  top: 5360px;
+  left: 265px;
+
+  width: 440px;
+  height: 520px;
+
+  background-image: url("/public/about/problem_1.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: opacity 0.25s ease, background-image 0.1s ease-out;
+}
+
+.about-problem-1:hover {
+  background-image: url("/public/about/problem_4.svg");
+}
+
+
+/* PROBLEM 2 ---------------------------------- */
+.about-problem-2 {
+  position: absolute;
+  top: 5360px;
+  left: 740px;
+
+  width: 440px;
+  height: 520px;
+
+  background-image: url("/public/about/problem_2.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: opacity 0.25s ease, background-image 0.1s ease-out;
+}
+
+.about-problem-2:hover {
+  background-image: url("/public/about/problem_5.svg");
+}
+
+
+/* PROBLEM 3 ---------------------------------- */
+.about-problem-3 {
+  position: absolute;
+  top: 5360px;
+  left: 1215px;
+
+  width: 440px;
+ height: 520px;
+
+  background-image: url("/public/about/problem_3.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: opacity 0.25s ease, background-image 0.1s ease-out;
+}
+
+.about-problem-3:hover {
+  background-image: url("/public/about/problem_6.svg");
+}
+
+/* ==================== SOLUTION SECTION ==================== */
+.about-solution {
+  position: absolute;
+  top: 6373px;        /* 요청한 정확한 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: auto;        /* SVG 원본 크기 유지 */
+  height: auto;
+  display: block;
+  z-index: 5;
+}
+
+@keyframes solutionFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 공통 숨김 상태 */
+.about-solution-1,
+.about-solution-2,
+.about-solution-3,
+.about-solution-4 {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.4s ease;
+  z-index: 5;
+}
+
+/* 각 위치 설정 */
+.about-solution-1 {
+  top: 6919px;
+  left: 265px;
+}
+
+.about-solution-2 {
+  top: 6919px;
+  left: 580px;
+}
+
+.about-solution-3 {
+  top: 7119px;
+  left: 1042.5px;
+}
+
+.about-solution-4 {
+  top: 6919px;
+  left: 1255px;
+}
+
+/* active가 붙었을 때 애니메이션 실행 */
+.about-solution-1.active {
+  animation: solutionFadeUp 0.6s ease-out forwards;
+}
+
+.about-solution-2.active {
+  animation: solutionFadeUp 0.6s ease-out 0.15s forwards;
+}
+
+.about-solution-3.active {
+  animation: solutionFadeUp 0.6s ease-out 0.3s forwards;
+}
+
+.about-solution-4.active {
+  animation: solutionFadeUp 0.6s ease-out 0.45s forwards;
+}
