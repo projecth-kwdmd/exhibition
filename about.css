@@ -365,69 +365,64 @@ body {
   z-index: -5;
 }
 
-/* ==================== PROBLEM HOVER SWITCH ==================== */
+/* ============================
+   PROBLEM CARDS (1~3 → 4~6)
+============================ */
 
-/* PROBLEM 1 ---------------------------------- */
-.about-problem-1 {
+/* 카드 공통 박스 */
+.about-problem-card {
   position: absolute;
+  width: 440px;
+  height: 520px;
+  cursor: pointer;
+}
+
+/* 개별 위치 */
+.problem-card-1 {
   top: 5360px;
   left: 265px;
-
-  width: 440px;
-  height: 520px;
-
-  background-image: url("/public/about/problem_1.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  transition: opacity 0.25s ease, background-image 0.1s ease-out;
 }
 
-.about-problem-1:hover {
-  background-image: url("/public/about/problem_4.svg");
-}
-
-
-/* PROBLEM 2 ---------------------------------- */
-.about-problem-2 {
-  position: absolute;
+.problem-card-2 {
   top: 5360px;
   left: 740px;
-
-  width: 440px;
-  height: 520px;
-
-  background-image: url("/public/about/problem_2.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  transition: opacity 0.25s ease, background-image 0.1s ease-out;
 }
 
-.about-problem-2:hover {
-  background-image: url("/public/about/problem_5.svg");
-}
-
-
-/* PROBLEM 3 ---------------------------------- */
-.about-problem-3 {
-  position: absolute;
+.problem-card-3 {
   top: 5360px;
   left: 1215px;
-
-  width: 440px;
-  height: 520px;
-
-  background-image: url("/public/about/problem_3.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  transition: opacity 0.25s ease, background-image 0.1s ease-out;
 }
 
-.about-problem-3:hover {
-  background-image: url("/public/about/problem_6.svg");
+/* 카드 안에 들어가는 이미지 (1/4, 2/5, 3/6) */
+.problem-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  border-radius: 40px; /* 필요하면 조절 */
 }
+
+/* 기본(1,2,3) 보이게 */
+.problem-base {
+  opacity: 1;
+}
+
+/* 호버 이미지(4,5,6)는 처음엔 숨김 */
+.problem-hover {
+  opacity: 0;
+}
+
+/* 호버 시: 4,5,6 나타나고, 1,2,3 사라짐 + 살짝 확대 */
+.about-problem-card:hover .problem-hover {
+  opacity: 1;
+}
+
+.about-problem-card:hover .problem-base {
+  opacity: 0;
+}
+
 
 /* ==================== SOLUTION SECTION ==================== */
 .about-solution {
