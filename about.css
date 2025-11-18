@@ -401,7 +401,8 @@ body {
   height: 100%;
   display: block;
   transition: opacity 0.35s ease, transform 0.35s ease;
-  border-radius: 40px; /* 필요하면 조절 */
+  border-radius: 40px;
+  /* 필요하면 조절 */
 }
 
 /* 기본(1,2,3) 보이게 */
@@ -919,6 +920,8 @@ body {
 
 .ba-badge--after {
   left: 100px;
+  background: #ffffff !important;
+  color: #56AFDF !important;
 }
 
 /* ============================
@@ -1077,8 +1080,8 @@ body {
 
 .gnb-menu-panel {
   position: fixed;
-  top: 100px;       
-  left: 1300px;        
+  top: 100px;
+  left: 1300px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1133,12 +1136,29 @@ body {
 }
 
 /* 열릴 때 순서대로 ‘쫙’ 내려오는 딜레이 */
-.gnb-menu-panel.is-open .gnb-menu-item:nth-child(1) { transition-delay: 0.02s; }
-.gnb-menu-panel.is-open .gnb-menu-item:nth-child(2) { transition-delay: 0.06s; }
-.gnb-menu-panel.is-open .gnb-menu-item:nth-child(3) { transition-delay: 0.10s; }
-.gnb-menu-panel.is-open .gnb-menu-item:nth-child(4) { transition-delay: 0.14s; }
-.gnb-menu-panel.is-open .gnb-menu-item:nth-child(5) { transition-delay: 0.18s; }
-.gnb-menu-panel.is-open .gnb-menu-item:nth-child(6) { transition-delay: 0.22s; }
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(1) {
+  transition-delay: 0.02s;
+}
+
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(2) {
+  transition-delay: 0.06s;
+}
+
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(3) {
+  transition-delay: 0.10s;
+}
+
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(4) {
+  transition-delay: 0.14s;
+}
+
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(5) {
+  transition-delay: 0.18s;
+}
+
+.gnb-menu-panel.is-open .gnb-menu-item:nth-child(6) {
+  transition-delay: 0.22s;
+}
 
 .gnb-menu-panel.is-open .gnb-menu-item {
   opacity: 1;
